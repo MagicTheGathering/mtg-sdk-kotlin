@@ -1,0 +1,53 @@
+group 'io.magicthegathering'
+version '0.0.1'
+
+buildscript {
+    ext.kotlin_version = '1.0.6'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin'
+
+repositories {
+    mavenCentral()
+}
+
+def rxkotlin_version = '0.60.0'
+def okhttp3_version = '3.4.1'
+def retrofit2_version = '2.1.0'
+def junit_version = '4.12'
+def joda_time_version = '2.9.7'
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Rx
+    compile "io.reactivex:rxkotlin:$rxkotlin_version"
+
+    // Retrofit
+    compile "com.squareup.okhttp3:okhttp:$okhttp3_version"
+    compile "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
+    compile "com.squareup.retrofit2:adapter-rxjava:$retrofit2_version"
+    compile("com.squareup.retrofit2:retrofit:$retrofit2_version") {
+        exclude module: "okhttp"
+    }
+    compile "com.squareup.retrofit2:converter-gson:$retrofit2_version"
+
+    // Joda Time
+    compile "joda-time:joda-time:$joda_time_version"
+
+    // Test
+    testCompile "junit:junit:$junit_version"
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+}
+
+sourceSets {
+    main.java.srcDirs += 'src'
+    test.java.srcDirs += 'test'
+}
