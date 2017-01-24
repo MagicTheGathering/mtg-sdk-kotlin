@@ -16,8 +16,7 @@ class MtgCardDeserializer : JsonDeserializer<MtgCard> {
         var card: MtgCard? = null
 
         if (jsonObject != null && !jsonObject.isJsonNull) {
-            val cardJsonObject: JsonObject = jsonObject.get("card").asJsonObject
-            card = gson.fromJson<MtgCard>(cardJsonObject, MtgCard::class.java)
+            card = gson.fromJson<MtgCard>(jsonObject, MtgCard::class.java)
         }
 
         return card
