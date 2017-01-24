@@ -12,7 +12,8 @@ Add the dependency to your project and you're good to go!
 
 Prerequisites
 -------------
-- Java JDK 7 or higher
+
+- Kotlin 1.0.6 or higher
 
 Usage examples with Rx
 ----------------------
