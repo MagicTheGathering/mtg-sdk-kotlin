@@ -8,12 +8,30 @@ import io.magicthegathering.kotlinsdk.model.card.MtgCardRuling
 import org.joda.time.DateTime
 import org.junit.Assert
 import org.junit.Test
+import retrofit2.adapter.rxjava.HttpException
+import rx.Observable
+import rx.lang.kotlin.onError
 
-class MtgCardApiClientGetSingleCardByMultiverseIdForDifferentLayoutsTests {
+class MtgCardApiClientGetCardByMultiverseIdTests {
+
+    @Test
+    fun getSingleCardAndGetA404NotFoundError() {
+        MtgCardApiClient.getCard(-1)
+                .onErrorResumeNext { exception: Throwable ->
+                    Observable.empty()
+                }
+                .onError { exception: Throwable ->
+                    Assert.assertTrue(exception is HttpException)
+                    val httpException: HttpException = exception as HttpException
+                    Assert.assertEquals(404, httpException.code())
+                    Assert.assertEquals("Not Found", httpException.message())
+                }
+                .subscribe { }
+    }
 
     @Test
     fun getNormalCard() {
-        MtgCardApiClient.instance.getCard(1).subscribe { card: MtgCard ->
+        MtgCardApiClient.getCard(1).subscribe { card: MtgCard ->
             Assert.assertEquals(card.name, "Ankh of Mishra")
             Assert.assertNull(card.names)
             Assert.assertEquals(card.manaCost, "{2}")
@@ -66,7 +84,7 @@ class MtgCardApiClientGetSingleCardByMultiverseIdForDifferentLayoutsTests {
 
     @Test
     fun getFlipCard() {
-        MtgCardApiClient.instance.getCard(78691).subscribe { card: MtgCard ->
+        MtgCardApiClient.getCard(78691).subscribe { card: MtgCard ->
             Assert.assertEquals(card.name, "Student of Elements")
             Assert.assertEquals(card.names!![0], "Student of Elements")
             Assert.assertEquals(card.names!![1], "Tobita, Master of Winds")
@@ -128,7 +146,7 @@ class MtgCardApiClientGetSingleCardByMultiverseIdForDifferentLayoutsTests {
 
     @Test
     fun getDoubleFacedCard() {
-        MtgCardApiClient.instance.getCard(409741).subscribe { card: MtgCard ->
+        MtgCardApiClient.getCard(409741).subscribe { card: MtgCard ->
             Assert.assertEquals(card.name, "Archangel Avacyn")
             Assert.assertEquals(card.names!![0], "Archangel Avacyn")
             Assert.assertEquals(card.names!![1], "Avacyn, the Purifier")
@@ -205,7 +223,7 @@ class MtgCardApiClientGetSingleCardByMultiverseIdForDifferentLayoutsTests {
 
     @Test
     fun getSplitCard() {
-        MtgCardApiClient.instance.getCard(20578).subscribe { card: MtgCard ->
+        MtgCardApiClient.getCard(20578).subscribe { card: MtgCard ->
             Assert.assertEquals(card.name, "Pain")
             Assert.assertEquals(card.names!![0], "Pain")
             Assert.assertEquals(card.names!![1], "Suffering")
@@ -263,7 +281,7 @@ class MtgCardApiClientGetSingleCardByMultiverseIdForDifferentLayoutsTests {
 
     @Test
     fun getTokenCard() {
-        MtgCardApiClient.instance.getCard(159048).subscribe { card: MtgCard ->
+        MtgCardApiClient.getCard(159048).subscribe { card: MtgCard ->
             Assert.assertEquals(card.name, "Elemental")
             Assert.assertNull(card.names)
             Assert.assertNull(card.manaCost)
@@ -294,7 +312,7 @@ class MtgCardApiClientGetSingleCardByMultiverseIdForDifferentLayoutsTests {
 
     @Test
     fun getPlaneCard() {
-        MtgCardApiClient.instance.getCard(198073).subscribe { card: MtgCard ->
+        MtgCardApiClient.getCard(198073).subscribe { card: MtgCard ->
             Assert.assertEquals(card.name, "Academy at Tolaria West")
             Assert.assertNull(card.names)
             Assert.assertNull(card.manaCost)
@@ -354,7 +372,7 @@ class MtgCardApiClientGetSingleCardByMultiverseIdForDifferentLayoutsTests {
 
     @Test
     fun getSchemeCard() {
-        MtgCardApiClient.instance.getCard(212648).subscribe { card: MtgCard ->
+        MtgCardApiClient.getCard(212648).subscribe { card: MtgCard ->
             Assert.assertEquals(card.name, "All in Good Time")
             Assert.assertNull(card.names)
             Assert.assertNull(card.manaCost)
@@ -399,7 +417,7 @@ class MtgCardApiClientGetSingleCardByMultiverseIdForDifferentLayoutsTests {
 
     @Test
     fun getPhenomenonCard() {
-        MtgCardApiClient.instance.getCard(226509).subscribe { card: MtgCard ->
+        MtgCardApiClient.getCard(226509).subscribe { card: MtgCard ->
             Assert.assertEquals(card.name, "Chaotic Aether")
             Assert.assertNull(card.names)
             Assert.assertNull(card.manaCost)
@@ -455,7 +473,7 @@ class MtgCardApiClientGetSingleCardByMultiverseIdForDifferentLayoutsTests {
 
     @Test
     fun getLevelerCard() {
-        MtgCardApiClient.instance.getCard(194918).subscribe { card: MtgCard ->
+        MtgCardApiClient.getCard(194918).subscribe { card: MtgCard ->
             Assert.assertEquals(card.name, "Caravan Escort")
             Assert.assertNull(card.names)
             Assert.assertEquals(card.manaCost, "{W}")
@@ -530,7 +548,7 @@ class MtgCardApiClientGetSingleCardByMultiverseIdForDifferentLayoutsTests {
 
     @Test
     fun getVanguardCard() {
-        MtgCardApiClient.instance.getCard(12329).subscribe { card: MtgCard ->
+        MtgCardApiClient.getCard(12329).subscribe { card: MtgCard ->
             Assert.assertEquals(card.name, "Ashnod")
             Assert.assertNull(card.names)
             Assert.assertNull(card.manaCost)

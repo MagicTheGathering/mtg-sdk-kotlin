@@ -22,8 +22,32 @@ Usage examples with Rx
 ```kotlin
 val multiverseId: Int = 409741
 
-val observable: Observable<MtgCard> = MtgCardApiClient.instance.getCard(multiverseId)
+val observable: Observable<MtgCard> = MtgCardApiClient.getCard(multiverseId)
 observable.subscribe { card: MtgCard ->
+    ...
+}
+```
+
+#### Get Cards by partial name
+```kotlin
+val partialName: String = "jace"
+val pageSize: Int = 2
+val page: Int = 1
+
+val observable: Observable<List<MtgCard>> = MtgCardApiClient.getCardsByPartialName(partialName, pageSize, page)
+observable.subscribe { cards: List<MtgCard> ->
+    ...
+}
+```
+
+#### Get Cards by exact name
+```kotlin
+val exactName: String = "zurgo helmsmasher"
+val pageSize: Int = 2
+val page: Int = 1
+
+val observable: Observable<List<MtgCard>> = MtgCardApiClient.getCardsByExactName(exactName, pageSize, page)
+observable.subscribe { cards: List<MtgCard> ->
     ...
 }
 ```
