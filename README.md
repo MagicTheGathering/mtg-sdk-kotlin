@@ -18,6 +18,8 @@ Prerequisites
 Usage examples with Rx
 ----------------------
 
+### Cards
+
 #### Get a Card
 ```kotlin
 val multiverseId: Int = 409741
@@ -48,6 +50,16 @@ val page: Int = 1
 
 val observable: Observable<List<MtgCard>> = MtgCardApiClient.getCardsByExactName(exactName, pageSize, page)
 observable.subscribe { cards: List<MtgCard> ->
+    ...
+}
+```
+
+#### Generate a booster pack by set code
+```kotlin
+val setCode: String = "mm2"
+
+val observable: Observable<List<MtgCard>> = MtgCardApiClient.generateBoosterPackBySetCode(setCode)
+observable.subscribe { cards ->
     ...
 }
 ```
