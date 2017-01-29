@@ -54,6 +54,32 @@ observable.subscribe { cards: List<MtgCard> ->
 }
 ```
 
+#### Get Cards by partial name with non English language
+```kotlin
+val language: String = "spanish"
+val partialName: String = "jace"
+val pageSize: Int = 2
+val page: Int = 1
+
+val observable: Observable<List<MtgCard>> = MtgCardApiClient.getCardsByPartialNameWithNonEnglishLanguage(language, partialName, pageSize, page)
+observable.subscribe { cards: List<MtgCard> ->
+    ...
+}
+```
+
+#### Get Cards by exact name with non English language
+```kotlin
+val language: String = "spanish"
+val exactName: String = "zurgo aplastacráneos"
+val pageSize: Int = 2
+val page: Int = 1
+
+val observable: Observable<List<MtgCard>> = MtgCardApiClient.getCardsByExactNameWithNonEnglishLanguage(language, exactName, pageSize, page)
+observable.subscribe { cards: List<MtgCard> ->
+    ...
+}
+```
+
 #### Generate a booster pack by set code
 ```kotlin
 val setCode: String = "mm2"
