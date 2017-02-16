@@ -15,6 +15,10 @@ class MtgCardApiClient private constructor() {
     companion object {
         private val instance: MtgCardApi by lazy { Holder.INSTANCE }
 
+        fun getAllCards(pageSize: Int = 10, page: Int = 0): Observable<List<MtgCard>> {
+            return instance.getAllCards(pageSize, page)
+        }
+
         fun getCard(multiverseId: Int): Observable<MtgCard> {
             return instance.getCard(multiverseId)
         }
@@ -41,6 +45,9 @@ class MtgCardApiClient private constructor() {
     }
 
     private interface MtgCardApi {
+
+        @GET("cards")
+        fun getAllCards(@Query("pageSize") pageSize: Int, @Query("page") page: Int): Observable<List<MtgCard>>
 
         @GET("cards/{multiverseId}")
         fun getCard(@Path("multiverseId") multiverseId: Int): Observable<MtgCard>

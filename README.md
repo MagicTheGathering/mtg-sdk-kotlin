@@ -20,6 +20,22 @@ Usage examples with Rx
 
 ### Cards
 
+#### Get all cards with default values (pageSize = 10, page = 0)
+```kotlin
+val observable: Observable<List<MtgCard>> = MtgCardApiClient.getAllCards()
+observable.subscribe { cards: List<MtgCard> ->
+    ...
+}
+```
+
+#### Get all cards with pageSize
+```kotlin
+val observable: Observable<List<MtgCard>> = MtgCardApiClient.getAllCards(50)
+observable.subscribe { cards: List<MtgCard> ->
+    ...
+}
+```
+
 #### Get a Card
 ```kotlin
 val multiverseId: Int = 409741
