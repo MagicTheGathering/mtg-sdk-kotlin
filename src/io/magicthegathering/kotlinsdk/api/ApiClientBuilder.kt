@@ -7,7 +7,7 @@ import io.magicthegathering.kotlinsdk.api.deserializer.MtgCardDeserializer
 import io.magicthegathering.kotlinsdk.model.card.MtgCard
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiClientBuilder private constructor() {
@@ -22,7 +22,7 @@ class ApiClientBuilder private constructor() {
 
         val INSTANCE: Retrofit = Retrofit.Builder()
                 .baseUrl("https://api.magicthegathering.io/v1/")
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
                 .build()

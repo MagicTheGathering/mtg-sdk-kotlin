@@ -1,10 +1,10 @@
 package io.magicthegathering.kotlinsdk.api
 
 import io.magicthegathering.kotlinsdk.model.card.MtgCard
+import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import rx.Observable
 
 class MtgCardApiClient private constructor() {
 
