@@ -96,11 +96,13 @@ observable.subscribe { cards: List<MtgCard> ->
 }
 ```
 
+### Sets
+
 #### Generate a booster pack by set code
 ```kotlin
 val setCode: String = "mm2"
 
-val observable: Observable<List<MtgCard>> = MtgCardApiClient.generateBoosterPackBySetCode(setCode)
+val observable: Observable<List<MtgCard>> = MtgSetApiClient.generateBoosterPackBySetCode(setCode)
 observable.subscribe { cards ->
     ...
 }
