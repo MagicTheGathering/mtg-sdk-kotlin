@@ -4,7 +4,7 @@ import io.magicthegathering.kotlinsdk.api.MtgSetApiClient
 import org.junit.Test
 import retrofit2.HttpException
 
-class MtgSetApiClientGenerateBoosterPackBySetCodeTests {
+class MtgSetApiClientTests {
 
     @Test
     fun generateBoosterPackBySetCodeAndGetA404NotFoundError() {
@@ -24,6 +24,17 @@ class MtgSetApiClientGenerateBoosterPackBySetCodeTests {
         test.assertValueCount(1)
         test.assertValue { cards ->
             cards.size == 15
+        }
+    }
+
+    @Test
+    fun getAllSets() {
+        val test = MtgSetApiClient.getAllSets().test()
+
+        test.assertComplete()
+        test.assertValue { sets ->
+            sets.size > 1 &&
+                    sets.find { it.code == "KTK" } != null
         }
     }
 }
