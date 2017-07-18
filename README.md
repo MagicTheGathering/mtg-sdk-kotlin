@@ -98,19 +98,29 @@ observable.subscribe { cards: List<MtgCard> ->
 
 ### Sets
 
+#### Get all sets
+```kotlin
+val observable: Observable<List<MtgSet>> = MtgSetApiClient.getAllSets()
+observable.subscribe { sets ->
+    ...
+}
+```
+
+#### Get a specific set
+```kotlin
+val setCode: String = "mm2"
+
+val observable: Observable<MtgSet> = MtgSetApiClient.getSpecificSet(setCode)
+observable.subscribe { set ->
+    ...
+}
+```
+
 #### Generate a booster pack by set code
 ```kotlin
 val setCode: String = "mm2"
 
 val observable: Observable<List<MtgCard>> = MtgSetApiClient.generateBoosterPackBySetCode(setCode)
-observable.subscribe { cards ->
-    ...
-}
-```
-
-#### Get all sets
-```kotlin
-val observable: Observable<List<MtgSet>> = MtgSetApiClient.getAllSets()
 observable.subscribe { cards ->
     ...
 }

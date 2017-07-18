@@ -21,15 +21,18 @@ class ItemTypeAdapterFactory : TypeAdapterFactory {
             @Throws(IOException::class)
             override fun read(`in`: JsonReader): T {
                 val jsonObject: JsonObject = elementAdapter?.read(`in`)!!.asJsonObject
+                val jsonObjectParentKey = jsonObject.entrySet().first().key
 
                 val jsonElement: JsonElement
 
-                if (jsonObject.has("cards")) {
+                if (jsonObjectParentKey == "cards") {
                     jsonElement = jsonObject.getAsJsonArray("cards")
-                } else if (jsonObject.has("sets")) {
+                } else if (jsonObjectParentKey == "sets") {
                     jsonElement = jsonObject.getAsJsonArray("sets")
-                } else if (jsonObject.has("card")) {
+                } else if (jsonObjectParentKey == "card") {
                     jsonElement = jsonObject.get("card")
+                } else if (jsonObjectParentKey == "set") {
+                    jsonElement = jsonObject.get("set")
                 } else {
                     jsonElement = jsonObject
                 }
