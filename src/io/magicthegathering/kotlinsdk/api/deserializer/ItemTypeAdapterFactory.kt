@@ -26,6 +26,8 @@ class ItemTypeAdapterFactory : TypeAdapterFactory {
 
                 if (jsonObject.has("cards")) {
                     jsonElement = jsonObject.getAsJsonArray("cards")
+                } else if (jsonObject.has("sets")) {
+                    jsonElement = jsonObject.getAsJsonArray("sets")
                 } else if (jsonObject.has("card")) {
                     jsonElement = jsonObject.get("card")
                 } else {

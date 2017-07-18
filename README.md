@@ -107,3 +107,11 @@ observable.subscribe { cards ->
     ...
 }
 ```
+
+#### Get all sets
+```kotlin
+val observable: Observable<List<MtgSet>> = MtgSetApiClient.getAllSets()
+observable.subscribe { cards ->
+    ...
+}
+```
