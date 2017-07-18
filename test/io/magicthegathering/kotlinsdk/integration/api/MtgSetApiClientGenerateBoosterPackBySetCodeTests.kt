@@ -1,14 +1,14 @@
 package io.magicthegathering.kotlinsdk.integration.api
 
-import io.magicthegathering.kotlinsdk.api.MtgCardApiClient
+import io.magicthegathering.kotlinsdk.api.MtgSetApiClient
 import org.junit.Test
 import retrofit2.HttpException
 
-class MtgCardApiClientGenerateBoosterPackBySetCodeTests {
+class MtgSetApiClientGenerateBoosterPackBySetCodeTests {
 
     @Test
     fun generateBoosterPackBySetCodeAndGetA404NotFoundError() {
-        val test = MtgCardApiClient.generateBoosterPackBySetCode("mm").test()
+        val test = MtgSetApiClient.generateBoosterPackBySetCode("mm").test()
 
         test.assertError { error ->
             val httpException = error as HttpException
@@ -18,7 +18,7 @@ class MtgCardApiClientGenerateBoosterPackBySetCodeTests {
 
     @Test
     fun generateBoosterPackBySetCode() {
-        val test = MtgCardApiClient.generateBoosterPackBySetCode("mm2").test()
+        val test = MtgSetApiClient.generateBoosterPackBySetCode("mm2").test()
 
         test.assertComplete()
         test.assertValueCount(1)

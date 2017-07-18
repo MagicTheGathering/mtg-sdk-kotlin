@@ -31,10 +31,6 @@ class MtgCardApiClient private constructor() {
             return instance.getCardsByName("\"$name\"", pageSize, page)
         }
 
-        fun generateBoosterPackBySetCode(setCode: String): Observable<List<MtgCard>> {
-            return instance.generateBoosterPackBySetCode(setCode)
-        }
-
         fun getCardsByPartialNameWithNonEnglishLanguage(language: String, name: String, pageSize: Int, page: Int): Observable<List<MtgCard>> {
             return instance.getCardsByNameWithNonEnglishLanguage(language, name, pageSize, page)
         }
@@ -54,9 +50,6 @@ class MtgCardApiClient private constructor() {
 
         @GET("cards")
         fun getCardsByName(@Query("name") name: String, @Query("pageSize") pageSize: Int, @Query("page") page: Int): Observable<List<MtgCard>>
-
-        @GET("sets/{setCode}/booster")
-        fun generateBoosterPackBySetCode(@Path("setCode") setCode: String): Observable<List<MtgCard>>
 
         @GET("cards")
         fun getCardsByNameWithNonEnglishLanguage(@Query("language") language: String, @Query("name") name: String, @Query("pageSize") pageSize: Int, @Query("page") page: Int): Observable<List<MtgCard>>
