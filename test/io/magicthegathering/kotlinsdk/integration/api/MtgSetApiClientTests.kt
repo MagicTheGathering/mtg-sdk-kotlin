@@ -10,7 +10,7 @@ class MtgSetApiClientTests {
 
     @Test
     fun getAllSets() {
-        val test = MtgSetApiClient.getAllSets().test()
+        val test = MtgSetApiClient.getAllSetsObservable().test()
 
         test.assertComplete()
         test.assertValue { sets ->
@@ -21,7 +21,7 @@ class MtgSetApiClientTests {
 
     @Test
     fun getSpecificSetAndGetA404NotFoundError() {
-        val test = MtgSetApiClient.getSpecificSet("KTK8").test()
+        val test = MtgSetApiClient.getSpecificSetObservable("KTK8").test()
 
         test.assertError { error ->
             val httpException = error as HttpException
@@ -31,7 +31,7 @@ class MtgSetApiClientTests {
 
     @Test
     fun getSpecificSet() {
-        val test = MtgSetApiClient.getSpecificSet("KTK").test()
+        val test = MtgSetApiClient.getSpecificSetObservable("KTK").test()
 
         test.assertComplete()
         test.assertValueCount(1)
@@ -50,7 +50,7 @@ class MtgSetApiClientTests {
 
     @Test
     fun generateBoosterPackBySetCodeAndGetA404NotFoundError() {
-        val test = MtgSetApiClient.generateBoosterPackBySetCode("mm").test()
+        val test = MtgSetApiClient.generateBoosterPackBySetCodeObservable("mm").test()
 
         test.assertError { error ->
             val httpException = error as HttpException
@@ -60,7 +60,7 @@ class MtgSetApiClientTests {
 
     @Test
     fun generateBoosterPackBySetCode() {
-        val test = MtgSetApiClient.generateBoosterPackBySetCode("mm2").test()
+        val test = MtgSetApiClient.generateBoosterPackBySetCodeObservable("mm2").test()
 
         test.assertComplete()
         test.assertValueCount(1)

@@ -21,8 +21,8 @@ class MtgSetApiClient {
          * @see <a href="https://docs.magicthegathering.io/#get-all-sets">Get All Sets - Endpoint</a>
          * @return Returns an Observable that emits a list containing all of the Magic: The Gathering sets.
          */
-        fun getAllSets(): Observable<List<MtgSet>> {
-            return instance.getAllSets()
+        fun getAllSetsObservable(): Observable<List<MtgSet>> {
+            return instance.getAllSetsObservable()
         }
 
         /**
@@ -32,8 +32,8 @@ class MtgSetApiClient {
          * @param setCode The set code. For example 'mm2' (Modern Masters 2015)
          * @return Returns an Observable that emits a specific Magic: The Gathering set.
          */
-        fun getSpecificSet(@Path("setCode") setCode: String): Observable<MtgSet> {
-            return instance.getSpecificSet(setCode)
+        fun getSpecificSetObservable(@Path("setCode") setCode: String): Observable<MtgSet> {
+            return instance.getSpecificSetObservable(setCode)
         }
 
         /**
@@ -43,20 +43,20 @@ class MtgSetApiClient {
          * @param setCode The set code. For example 'mm2' (Modern Masters 2015)
          * @return Returns an Observable that emits a booster pack with 15 random cards.
          */
-        fun generateBoosterPackBySetCode(setCode: String): Observable<List<MtgCard>> {
-            return instance.generateBoosterPackBySetCode(setCode)
+        fun generateBoosterPackBySetCodeObservable(setCode: String): Observable<List<MtgCard>> {
+            return instance.generateBoosterPackBySetCodeObservable(setCode)
         }
     }
 
     private interface MtgSetApi {
 
         @GET("sets")
-        fun getAllSets(): Observable<List<MtgSet>>
+        fun getAllSetsObservable(): Observable<List<MtgSet>>
 
         @GET("sets/{setCode}")
-        fun getSpecificSet(@Path("setCode") setCode: String): Observable<MtgSet>
+        fun getSpecificSetObservable(@Path("setCode") setCode: String): Observable<MtgSet>
 
         @GET("sets/{setCode}/booster")
-        fun generateBoosterPackBySetCode(@Path("setCode") setCode: String): Observable<List<MtgCard>>
+        fun generateBoosterPackBySetCodeObservable(@Path("setCode") setCode: String): Observable<List<MtgCard>>
     }
 }
