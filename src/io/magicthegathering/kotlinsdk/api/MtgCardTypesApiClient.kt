@@ -5,7 +5,7 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 
-class MtgCardTypesApiClient {
+class MtgCardTypesApiClient private constructor() {
 
     private object Holder {
         val INSTANCE: MtgCardTypesApi = ApiClientBuilder.instance.create(MtgCardTypesApi::class.java)

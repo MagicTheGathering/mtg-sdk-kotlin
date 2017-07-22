@@ -8,7 +8,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-class MtgSetApiClient {
+class MtgSetApiClient private constructor() {
 
     private object Holder {
         val INSTANCE: MtgSetApi = ApiClientBuilder.instance.create(MtgSetApi::class.java)
