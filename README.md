@@ -66,13 +66,35 @@ val cardResponse: Response<MtgCard> = MtgCardApiClient.getCard(multiverseId)
 val card = cardResponse.body()
 ```
 
+#### Get Cards by partial name as observable
+```kotlin
+val partialName: String = "jace"
+val pageSize: Int = 2
+val page: Int = 1
+
+val observable: Observable<List<MtgCard>> = MtgCardApiClient.getCardsByPartialNameObservable(partialName, pageSize, page)
+observable.subscribe { cards: List<MtgCard> ->
+    ...
+}
+```
+
 #### Get Cards by partial name
 ```kotlin
 val partialName: String = "jace"
 val pageSize: Int = 2
 val page: Int = 1
 
-val observable: Observable<List<MtgCard>> = MtgCardApiClient.getCardsByPartialName(partialName, pageSize, page)
+val cardsResponse: Response<List<MtgCard>> = MtgCardApiClient.getCardsByPartialName(partialName, pageSize, page)
+val cards = cardsResponse.body()
+```
+
+#### Get Cards by exact name as observable
+```kotlin
+val exactName: String = "zurgo helmsmasher"
+val pageSize: Int = 2
+val page: Int = 1
+
+val observable: Observable<List<MtgCard>> = MtgCardApiClient.getCardsByExactNameObservable(exactName, pageSize, page)
 observable.subscribe { cards: List<MtgCard> ->
     ...
 }
@@ -84,7 +106,18 @@ val exactName: String = "zurgo helmsmasher"
 val pageSize: Int = 2
 val page: Int = 1
 
-val observable: Observable<List<MtgCard>> = MtgCardApiClient.getCardsByExactName(exactName, pageSize, page)
+val cardsResponse: Response<List<MtgCard>> = MtgCardApiClient.getCardsByExactName(exactName, pageSize, page)
+val cards = cardsResponse.body()
+```
+
+#### Get Cards by partial name with non English language as observable
+```kotlin
+val language: String = "spanish"
+val partialName: String = "jace"
+val pageSize: Int = 2
+val page: Int = 1
+
+val observable: Observable<List<MtgCard>> = MtgCardApiClient.getCardsByPartialNameWithNonEnglishLanguageObservable(language, partialName, pageSize, page)
 observable.subscribe { cards: List<MtgCard> ->
     ...
 }
@@ -97,7 +130,18 @@ val partialName: String = "jace"
 val pageSize: Int = 2
 val page: Int = 1
 
-val observable: Observable<List<MtgCard>> = MtgCardApiClient.getCardsByPartialNameWithNonEnglishLanguage(language, partialName, pageSize, page)
+val cardsResponse: Response<List<MtgCard>> = MtgCardApiClient.getCardsByPartialNameWithNonEnglishLanguage(language, partialName, pageSize, page)
+val cards = cardsResponse.body()
+```
+
+#### Get Cards by exact name with non English language as observable
+```kotlin
+val language: String = "spanish"
+val exactName: String = "zurgo aplastacráneos"
+val pageSize: Int = 2
+val page: Int = 1
+
+val observable: Observable<List<MtgCard>> = MtgCardApiClient.getCardsByExactNameWithNonEnglishLanguageObservable(language, exactName, pageSize, page)
 observable.subscribe { cards: List<MtgCard> ->
     ...
 }
@@ -110,10 +154,8 @@ val exactName: String = "zurgo aplastacráneos"
 val pageSize: Int = 2
 val page: Int = 1
 
-val observable: Observable<List<MtgCard>> = MtgCardApiClient.getCardsByExactNameWithNonEnglishLanguage(language, exactName, pageSize, page)
-observable.subscribe { cards: List<MtgCard> ->
-    ...
-}
+val cardsResponse: Response<List<MtgCard>> = MtgCardApiClient.getCardsByExactNameWithNonEnglishLanguage(languageø, exactName, pageSize, page)
+val cards = cardsResponse.body()
 ```
 
 ### Sets
