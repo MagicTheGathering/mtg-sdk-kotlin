@@ -20,12 +20,18 @@ Usage examples
 
 ### Cards
 
-#### Get all cards with default values (pageSize = 10, page = 0)
+#### Get all cards with default values (pageSize = 10, page = 0) as observable
 ```kotlin
-val observable: Observable<List<MtgCard>> = MtgCardApiClient.getAllCards()
+val observable: Observable<List<MtgCard>> = MtgCardApiClient.getAllCardsObservable()
 observable.subscribe { cards: List<MtgCard> ->
     ...
 }
+```
+
+#### Get all cards with default values (pageSize = 10, page = 0)
+```kotlin
+val cardsResponse: Response<List<MtgCard>> = MtgCardApiClient.getAllCards()
+val cards = cardsResponse.body()
 ```
 
 #### Get all cards with pageSize
@@ -98,7 +104,7 @@ observable.subscribe { cards: List<MtgCard> ->
 
 ### Sets
 
-#### Get all sets as abservable
+#### Get all sets as observable
 ```kotlin
 val observable: Observable<List<MtgSet>> = MtgSetApiClient.getAllSetsObservable()
 observable.subscribe { sets ->

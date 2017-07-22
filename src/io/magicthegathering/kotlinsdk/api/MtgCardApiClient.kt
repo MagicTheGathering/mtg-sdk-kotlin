@@ -2,6 +2,8 @@ package io.magicthegathering.kotlinsdk.api
 
 import io.magicthegathering.kotlinsdk.model.card.MtgCard
 import io.reactivex.Observable
+import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -15,8 +17,28 @@ class MtgCardApiClient private constructor() {
     companion object {
         private val instance: MtgCardApi by lazy { Holder.INSTANCE }
 
-        fun getAllCards(pageSize: Int = 10, page: Int = 0): Observable<List<MtgCard>> {
-            return instance.getAllCards(pageSize, page)
+        /**
+         * Get all Magic: The Gathering cards.
+         *
+         * @see <a href="https://docs.magicthegathering.io/#get-all-cards">Get all cards - Endpoint</a>
+         * @param pageSize The page size.
+         * @param page The next page.
+         * @return Returns an Observable that emits a list containing all of the Magic: The Gathering cards.
+         */
+        fun getAllCardsObservable(pageSize: Int = 10, page: Int = 0): Observable<List<MtgCard>> {
+            return instance.getAllCardsObservable(pageSize, page)
+        }
+
+        /**
+         * Get all Magic: The Gathering cards.
+         *
+         * @see <a href="https://docs.magicthegathering.io/#get-all-cards">Get all cards - Endpoint</a>
+         * @param pageSize The page size.
+         * @param page The next page.
+         * @return Returns a list containing all of the Magic: The Gathering cards.
+         */
+        fun getAllCards(pageSize: Int = 10, page: Int = 0): Response<List<MtgCard>> {
+            return instance.getAllCards(pageSize, page).execute()
         }
 
         fun getCard(multiverseId: Int): Observable<MtgCard> {
@@ -43,7 +65,10 @@ class MtgCardApiClient private constructor() {
     private interface MtgCardApi {
 
         @GET("cards")
-        fun getAllCards(@Query("pageSize") pageSize: Int, @Query("page") page: Int): Observable<List<MtgCard>>
+        fun getAllCardsObservable(@Query("pageSize") pageSize: Int, @Query("page") page: Int): Observable<List<MtgCard>>
+
+        @GET("cards")
+        fun getAllCards(@Query("pageSize") pageSize: Int, @Query("page") page: Int): Call<List<MtgCard>>
 
         @GET("cards/{multiverseId}")
         fun getCard(@Path("multiverseId") multiverseId: Int): Observable<MtgCard>
