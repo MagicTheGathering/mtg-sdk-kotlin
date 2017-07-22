@@ -32,6 +32,10 @@ class ItemTypeAdapterFactory : TypeAdapterFactory {
                         jsonElement = jsonObject.getAsJsonArray("sets")
                     } else if (jsonObjectParentKey == "types") {
                         jsonElement = jsonObject.getAsJsonArray("types")
+                    } else if (jsonObjectParentKey == "supertypes") {
+                        jsonElement = jsonObject.getAsJsonArray("supertypes")
+                    } else if (jsonObjectParentKey == "subtypes") {
+                        jsonElement = jsonObject.getAsJsonArray("subtypes")
                     } else if (jsonObjectParentKey == "card") {
                         jsonElement = jsonObject.get("card")
                     } else if (jsonObjectParentKey == "set") {

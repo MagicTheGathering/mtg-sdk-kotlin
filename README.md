@@ -163,3 +163,31 @@ observable.subscribe { cardTypes ->
 val cardTypesResponse: Response<List<String>> = MtgCardTypesApiClient.getAllTypes()
 val cardTypes = cardTypesResponse.body()
 ```
+
+#### Get all card supertypes as observable
+```kotlin
+val observable: Observable<List<String>> = MtgCardTypesApiClient.getAllSupertypesObservable()
+observable.subscribe { cardTypes ->
+    ...
+}
+```
+
+#### Get all card supertypes
+```kotlin
+val cardTypesResponse: Response<List<String>> = MtgCardTypesApiClient.getAllSupertypes()
+val cardTypes = cardTypesResponse.body()
+```
+
+#### Get all card subtypes as observable
+```kotlin
+val observable: Observable<List<String>> = MtgCardTypesApiClient.getAllSubtypesObservable()
+observable.subscribe { cardTypes ->
+    ...
+}
+```
+
+#### Get all card subtypes
+```kotlin
+val cardTypesResponse: Response<List<String>> = MtgCardTypesApiClient.getAllSubtypes()
+val cardTypes = cardTypesResponse.body()
+```
