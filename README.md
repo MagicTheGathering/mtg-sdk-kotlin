@@ -140,7 +140,7 @@ observable.subscribe { cards ->
 }
 ```
 
-#### Generate a booster pack by set code as observable
+#### Generate a booster pack by set code
 ```kotlin
 val setCode: String = "mm2"
 
