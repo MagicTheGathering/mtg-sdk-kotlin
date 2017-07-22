@@ -27,7 +27,6 @@ class MtgCardTypesApiClientTests {
                     cardTypes[10] == "Sorcery" &&
                     cardTypes[11] == "Tribal" &&
                     cardTypes[12] == "Vanguard"
-
         }
     }
 

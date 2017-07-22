@@ -15,8 +15,8 @@ Prerequisites
 
 - Kotlin 1.0.6 or higher
 
-Usage examples with RxJava 2
-----------------------------
+Usage examples
+--------------
 
 ### Cards
 
