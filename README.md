@@ -144,6 +144,22 @@ observable.subscribe { cards ->
 ```kotlin
 val setCode: String = "mm2"
 
-val cardsResponse = MtgSetApiClient.generateBoosterPackBySetCode(setCode)
+val cardsResponse: Response<List<MtgCard>> = MtgSetApiClient.generateBoosterPackBySetCode(setCode)
 val cards = cardsResponse.body()
+```
+
+### Card Types
+
+#### Get all card types as observable
+```kotlin
+val observable: Observable<List<String>> = MtgCardTypesApiClient.getAllTypesObservable()
+observable.subscribe { cardTypes ->
+    ...
+}
+```
+
+#### Get all card types
+```kotlin
+val cardTypesResponse: Response<List<String>> = MtgCardTypesApiClient.getAllTypes()
+val cardTypes = cardTypesResponse.body()
 ```

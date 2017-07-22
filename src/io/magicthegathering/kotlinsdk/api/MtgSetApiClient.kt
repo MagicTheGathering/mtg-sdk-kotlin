@@ -20,7 +20,7 @@ class MtgSetApiClient {
         /**
          * Get all Magic: The Gathering sets.
          *
-         * @see <a href="https://docs.magicthegathering.io/#get-all-sets">Get All Sets - Endpoint</a>
+         * @see <a href="https://docs.magicthegathering.io/#get-all-sets">Get all sets - Endpoint</a>
          * @return Returns an Observable that emits a list containing all of the Magic: The Gathering sets.
          */
         fun getAllSetsObservable(): Observable<List<MtgSet>> {
@@ -30,7 +30,7 @@ class MtgSetApiClient {
         /**
          * Get all Magic: The Gathering sets.
          *
-         * @see <a href="https://docs.magicthegathering.io/#get-all-sets">Get All Sets - Endpoint</a>
+         * @see <a href="https://docs.magicthegathering.io/#get-all-sets">Get all sets - Endpoint</a>
          * @return Returns a list containing all of the Magic: The Gathering sets.
          */
         fun getAllSets(): Response<List<MtgSet>> {
@@ -40,7 +40,7 @@ class MtgSetApiClient {
         /**
          * Get a specific Magic: The Gathering set.
          *
-         * @see <a href="https://docs.magicthegathering.io/#get-a-specific-set">Get a Specific Set - Endpoint</a>
+         * @see <a href="https://docs.magicthegathering.io/#get-a-specific-set">Get a specific set - Endpoint</a>
          * @param setCode The set code. For example 'mm2' (Modern Masters 2015)
          * @return Returns an Observable that emits a specific Magic: The Gathering set.
          */
@@ -51,7 +51,7 @@ class MtgSetApiClient {
         /**
          * Get a specific Magic: The Gathering set.
          *
-         * @see <a href="https://docs.magicthegathering.io/#get-a-specific-set">Get a Specific Set - Endpoint</a>
+         * @see <a href="https://docs.magicthegathering.io/#get-a-specific-set">Get a specific set - Endpoint</a>
          * @param setCode The set code. For example 'mm2' (Modern Masters 2015)
          * @return Returns a specific Magic: The Gathering set.
          */
@@ -62,7 +62,7 @@ class MtgSetApiClient {
         /**
          * Generates a booster pack by a specific set code.
          *
-         * @see <a href="https://docs.magicthegathering.io/#generate-a-booster-pack">Generate a Booster Pack - Endpoint</a>
+         * @see <a href="https://docs.magicthegathering.io/#generate-a-booster-pack">Generate a booster pack - Endpoint</a>
          * @param setCode The set code. For example 'mm2' (Modern Masters 2015)
          * @return Returns an Observable that emits a booster pack with 15 random cards.
          */
@@ -73,7 +73,7 @@ class MtgSetApiClient {
         /**
          * Generates a booster pack by a specific set code.
          *
-         * @see <a href="https://docs.magicthegathering.io/#generate-a-booster-pack">Generate a Booster Pack - Endpoint</a>
+         * @see <a href="https://docs.magicthegathering.io/#generate-a-booster-pack">Generate a booster pack - Endpoint</a>
          * @param setCode The set code. For example 'mm2' (Modern Masters 2015)
          * @return Returns a booster pack with 15 random cards.
          */
