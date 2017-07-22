@@ -41,8 +41,26 @@ class MtgCardApiClient private constructor() {
             return instance.getAllCards(pageSize, page).execute()
         }
 
-        fun getCard(multiverseId: Int): Observable<MtgCard> {
-            return instance.getCard(multiverseId)
+        /**
+         * Get a specific Magic: The Gathering card.
+         *
+         * @see <a href="https://docs.magicthegathering.io/#get-a-specific-card">Get a specific card - Endpoint</a>
+         * @param multiverseId The official Magic: The Gathering card id.
+         * @return Returns an Observable that emits a specific Magic: The Gathering card.
+         */
+        fun getCardObservable(multiverseId: Int): Observable<MtgCard> {
+            return instance.getCardObservable(multiverseId)
+        }
+
+        /**
+         * Get a specific Magic: The Gathering card.
+         *
+         * @see <a href="https://docs.magicthegathering.io/#get-a-specific-card">Get a specific card - Endpoint</a>
+         * @param multiverseId The official Magic: The Gathering card id.
+         * @return Returns a specific Magic: The Gathering card.
+         */
+        fun getCard(multiverseId: Int): Response<MtgCard> {
+            return instance.getCard(multiverseId).execute()
         }
 
         fun getCardsByPartialName(name: String, pageSize: Int, page: Int): Observable<List<MtgCard>> {
@@ -71,7 +89,10 @@ class MtgCardApiClient private constructor() {
         fun getAllCards(@Query("pageSize") pageSize: Int, @Query("page") page: Int): Call<List<MtgCard>>
 
         @GET("cards/{multiverseId}")
-        fun getCard(@Path("multiverseId") multiverseId: Int): Observable<MtgCard>
+        fun getCardObservable(@Path("multiverseId") multiverseId: Int): Observable<MtgCard>
+
+        @GET("cards/{multiverseId}")
+        fun getCard(@Path("multiverseId") multiverseId: Int): Call<MtgCard>
 
         @GET("cards")
         fun getCardsByName(@Query("name") name: String, @Query("pageSize") pageSize: Int, @Query("page") page: Int): Observable<List<MtgCard>>

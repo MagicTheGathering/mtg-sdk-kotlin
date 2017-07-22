@@ -34,10 +34,26 @@ val cardsResponse: Response<List<MtgCard>> = MtgCardApiClient.getAllCards()
 val cards = cardsResponse.body()
 ```
 
+#### Get all cards with pageSize as observable
+```kotlin
+val observable: Observable<List<MtgCard>> = MtgCardApiClient.getAllCardsObservable(50)
+observable.subscribe { cards: List<MtgCard> ->
+    ...
+}
+```
+
 #### Get all cards with pageSize
 ```kotlin
-val observable: Observable<List<MtgCard>> = MtgCardApiClient.getAllCards(50)
-observable.subscribe { cards: List<MtgCard> ->
+val cardsResponse: Response<List<MtgCard>> = MtgCardApiClient.getAllCards(50)
+val cards = cardsResponse.body()
+```
+
+#### Get a Card as observable
+```kotlin
+val multiverseId: Int = 409741
+
+val observable: Observable<MtgCard> = MtgCardApiClient.getCardObservable(multiverseId)
+observable.subscribe { card: MtgCard ->
     ...
 }
 ```
@@ -46,10 +62,8 @@ observable.subscribe { cards: List<MtgCard> ->
 ```kotlin
 val multiverseId: Int = 409741
 
-val observable: Observable<MtgCard> = MtgCardApiClient.getCard(multiverseId)
-observable.subscribe { card: MtgCard ->
-    ...
-}
+val cardResponse: Response<MtgCard> = MtgCardApiClient.getCard(multiverseId)
+val card = cardResponse.body()
 ```
 
 #### Get Cards by partial name
