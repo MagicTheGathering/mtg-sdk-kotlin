@@ -3,6 +3,8 @@ package io.magicthegathering.kotlinsdk.api
 import io.magicthegathering.kotlinsdk.model.card.MtgCard
 import io.magicthegathering.kotlinsdk.model.set.MtgSet
 import io.reactivex.Observable
+import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -26,6 +28,16 @@ class MtgSetApiClient {
         }
 
         /**
+         * Get all Magic: The Gathering sets.
+         *
+         * @see <a href="https://docs.magicthegathering.io/#get-all-sets">Get All Sets - Endpoint</a>
+         * @return Returns a list containing all of the Magic: The Gathering sets.
+         */
+        fun getAllSets(): Response<List<MtgSet>> {
+            return instance.getAllSets().execute()
+        }
+
+        /**
          * Get a specific Magic: The Gathering set.
          *
          * @see <a href="https://docs.magicthegathering.io/#get-a-specific-set">Get a Specific Set - Endpoint</a>
@@ -34,6 +46,17 @@ class MtgSetApiClient {
          */
         fun getSpecificSetObservable(@Path("setCode") setCode: String): Observable<MtgSet> {
             return instance.getSpecificSetObservable(setCode)
+        }
+
+        /**
+         * Get a specific Magic: The Gathering set.
+         *
+         * @see <a href="https://docs.magicthegathering.io/#get-a-specific-set">Get a Specific Set - Endpoint</a>
+         * @param setCode The set code. For example 'mm2' (Modern Masters 2015)
+         * @return Returns a specific Magic: The Gathering set.
+         */
+        fun getSpecificSet(@Path("setCode") setCode: String): Response<MtgSet> {
+            return instance.getSpecificSet(setCode).execute()
         }
 
         /**
@@ -46,6 +69,17 @@ class MtgSetApiClient {
         fun generateBoosterPackBySetCodeObservable(setCode: String): Observable<List<MtgCard>> {
             return instance.generateBoosterPackBySetCodeObservable(setCode)
         }
+
+        /**
+         * Generates a booster pack by a specific set code.
+         *
+         * @see <a href="https://docs.magicthegathering.io/#generate-a-booster-pack">Generate a Booster Pack - Endpoint</a>
+         * @param setCode The set code. For example 'mm2' (Modern Masters 2015)
+         * @return Returns a booster pack with 15 random cards.
+         */
+        fun generateBoosterPackBySetCode(setCode: String): Response<List<MtgCard>> {
+            return instance.generateBoosterPackBySetCode(setCode).execute()
+        }
     }
 
     private interface MtgSetApi {
@@ -53,10 +87,19 @@ class MtgSetApiClient {
         @GET("sets")
         fun getAllSetsObservable(): Observable<List<MtgSet>>
 
+        @GET("sets")
+        fun getAllSets(): Call<List<MtgSet>>
+
         @GET("sets/{setCode}")
         fun getSpecificSetObservable(@Path("setCode") setCode: String): Observable<MtgSet>
 
+        @GET("sets/{setCode}")
+        fun getSpecificSet(@Path("setCode") setCode: String): Call<MtgSet>
+
         @GET("sets/{setCode}/booster")
         fun generateBoosterPackBySetCodeObservable(@Path("setCode") setCode: String): Observable<List<MtgCard>>
+
+        @GET("sets/{setCode}/booster")
+        fun generateBoosterPackBySetCode(@Path("setCode") setCode: String): Call<List<MtgCard>>
     }
 }

@@ -106,6 +106,12 @@ observable.subscribe { sets ->
 }
 ```
 
+#### Get all sets
+```kotlin
+val setsResponse: Response<List<MtgSet>> = MtgSetApiClient.getAllSets()
+val sets = setsResponse.body()
+```
+
 #### Get a specific set as observable
 ```kotlin
 val setCode: String = "mm2"
@@ -116,6 +122,14 @@ observable.subscribe { set ->
 }
 ```
 
+#### Get a specific set
+```kotlin
+val setCode: String = "mm2"
+
+val setResponse: Response<MtgSet> = MtgSetApiClient.getSpecificSet(setCode)
+val set = setResponse.body()
+```
+
 #### Generate a booster pack by set code as observable
 ```kotlin
 val setCode: String = "mm2"
@@ -124,4 +138,12 @@ val observable: Observable<List<MtgCard>> = MtgSetApiClient.generateBoosterPackB
 observable.subscribe { cards ->
     ...
 }
+```
+
+#### Generate a booster pack by set code as observable
+```kotlin
+val setCode: String = "mm2"
+
+val cardsResponse = MtgSetApiClient.generateBoosterPackBySetCode(setCode)
+val cards = cardsResponse.body()
 ```
