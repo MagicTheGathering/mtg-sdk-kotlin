@@ -1,0 +1,17 @@
+# IntelliJ
+
+.idea/
+*.iml
+
+# MacOS
+
+.DS_Store
+
+# Build
+
+build/
+.gradle/
+out/
+
+# Local configuration file (sdk path, etc)
+local.properties
