@@ -9,7 +9,24 @@ Note that API use is free and does not require authentication or registration, b
 |:---------------:|:------------:|
 | [ ![jcenter](https://api.bintray.com/packages/asantalla/develoop/magicthegatheringio-kotlin-sdk/images/download.svg) ](https://bintray.com/asantalla/develoop/magicthegatheringio-kotlin-sdk/_latestVersion) | [![Build Status](https://travis-ci.org/MagicTheGathering/mtg-sdk-kotlin.svg?branch=develop)](https://travis-ci.org/MagicTheGathering/mtg-sdk-kotlin) |
 
-Add the dependency to your project and you're good to go! 
+Add the dependency to your project and you're good to go!
+ 
+Download
+--------
+
+First of all, be sure you have the **jcenter repository** included in the `build.gradle` file in the root of your project.
+
+```
+repositories {
+    jcenter()
+}
+```
+
+Next add the gradle compile dependency to the `build.gradle` file of your app module.
+
+```
+compile 'io.magicthegathering:kotlinsdk:1.0.0'
+```
 
 Prerequisites
 -------------
