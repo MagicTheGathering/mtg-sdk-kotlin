@@ -1,22 +1,23 @@
-group 'io.magicthegathering'
-version '0.0.1'
-
 buildscript {
-    ext.kotlin_version = '1.1.2'
+    ext.kotlin_version = '1.1.2-2'
 
     repositories {
-        mavenCentral()
+        jcenter()
     }
+
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
+}
+
+repositories {
+    jcenter()
 }
 
 apply plugin: 'kotlin'
-
-repositories {
-    mavenCentral()
-}
+apply plugin: 'com.jfrog.bintray'
 
 def rxjava2_version = '2.1.0'
 def okhttp3_version = '3.8.0'
@@ -27,10 +28,10 @@ def joda_time_version = '2.9.9'
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    // RxJava
+    // RxJava 2
     compile "io.reactivex.rxjava2:rxjava:$rxjava2_version"
 
-    // Retrofit
+    // Retrofit 2
     compile "com.squareup.okhttp3:okhttp:$okhttp3_version"
     compile "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
     compile "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_version"
@@ -50,4 +51,33 @@ dependencies {
 sourceSets {
     main.java.srcDirs += 'src'
     test.java.srcDirs += 'test'
+}
+
+ext {
+    bintrayRepo = 'develoop'
+    bintrayName = 'magicthegatheringio-kotlin-sdk'
+
+    publishedGroupId = 'io.magicthegathering'
+    libraryName = 'mtg-sdk-kotlin'
+    artifact = 'kotlinsdk'
+
+    libraryDescription = 'Kotlin SDK for using the magicthegathering.io APIs'
+
+    siteUrl = 'https://github.com/MagicTheGathering/mtg-sdk-kotlin'
+    gitUrl = 'https://github.com/MagicTheGathering/mtg-sdk-kotlin.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'asantalla'
+    developerName = 'Adrián Santalla'
+    developerEmail = 'adrian.santalla@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+if (project.rootProject.file('local.properties').exists()) {
+    apply from: 'install.gradle'
+    apply from: 'bintray.gradle'
 }
