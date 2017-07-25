@@ -20,7 +20,6 @@ class MtgCardApiClient private constructor() {
         /**
          * Get all Magic: The Gathering cards.
          *
-         * @see <a href="https://docs.magicthegathering.io/#get-all-cards">Get all cards - Endpoint</a>
          * @param pageSize The page size.
          * @param page The next page.
          * @return Returns an Observable that emits a list containing all of the Magic: The Gathering cards.
@@ -32,7 +31,6 @@ class MtgCardApiClient private constructor() {
         /**
          * Get all Magic: The Gathering cards.
          *
-         * @see <a href="https://docs.magicthegathering.io/#get-all-cards">Get all cards - Endpoint</a>
          * @param pageSize The page size.
          * @param page The next page.
          * @return Returns a list containing all of the Magic: The Gathering cards.
@@ -44,7 +42,6 @@ class MtgCardApiClient private constructor() {
         /**
          * Get a specific Magic: The Gathering card.
          *
-         * @see <a href="https://docs.magicthegathering.io/#get-a-specific-card">Get a specific card - Endpoint</a>
          * @param multiverseId The official Magic: The Gathering card id.
          * @return Returns an Observable that emits a specific Magic: The Gathering card.
          */
@@ -55,7 +52,6 @@ class MtgCardApiClient private constructor() {
         /**
          * Get a specific Magic: The Gathering card.
          *
-         * @see <a href="https://docs.magicthegathering.io/#get-a-specific-card">Get a specific card - Endpoint</a>
          * @param multiverseId The official Magic: The Gathering card id.
          * @return Returns a specific Magic: The Gathering card.
          */

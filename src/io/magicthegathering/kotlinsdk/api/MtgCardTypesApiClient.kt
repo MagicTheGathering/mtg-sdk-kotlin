@@ -17,7 +17,6 @@ class MtgCardTypesApiClient private constructor() {
         /**
          * Get all Magic: The Gathering card types.
          *
-         * @see <a href="https://docs.magicthegathering.io/#get-all-types">Get all card types - Endpoint</a>
          * @return Returns an Observable that emits a list containing all of the Magic: The Gathering card types.
          */
         fun getAllTypesObservable(): Observable<List<String>> {
@@ -27,7 +26,6 @@ class MtgCardTypesApiClient private constructor() {
         /**
          * Get all Magic: The Gathering card types.
          *
-         * @see <a href="https://docs.magicthegathering.io/#get-all-types">Get all card types - Endpoint</a>
          * @return Returns a list containing all of the Magic: The Gathering card types.
          */
         fun getAllTypes(): Response<List<String>> {
@@ -37,7 +35,6 @@ class MtgCardTypesApiClient private constructor() {
         /**
          * Get all Magic: The Gathering card supertypes.
          *
-         * @see <a href="https://docs.magicthegathering.io/#get-all-supertypes">Get all card supertypes - Endpoint</a>
          * @return Returns an Observable that emits a list containing all of the Magic: The Gathering card supertypes.
          */
         fun getAllSupertypesObservable(): Observable<List<String>> {
@@ -47,7 +44,6 @@ class MtgCardTypesApiClient private constructor() {
         /**
          * Get all Magic: The Gathering card supertypes.
          *
-         * @see <a href="https://docs.magicthegathering.io/#get-all-supertypes">Get all card supertypes - Endpoint</a>
          * @return Returns a list containing all of the Magic: The Gathering card supertypes.
          */
         fun getAllSupertypes(): Response<List<String>> {
@@ -57,7 +53,6 @@ class MtgCardTypesApiClient private constructor() {
         /**
          * Get all Magic: The Gathering card subtypes.
          *
-         * @see <a href="https://docs.magicthegathering.io/#get-all-subtypes">Get all card subtypes - Endpoint</a>
          * @return Returns an Observable that emits a list containing all of the Magic: The Gathering card subtypes.
          */
         fun getAllSubtypesObservable(): Observable<List<String>> {
@@ -67,7 +62,6 @@ class MtgCardTypesApiClient private constructor() {
         /**
          * Get all Magic: The Gathering card subtypes.
          *
-         * @see <a href="https://docs.magicthegathering.io/#get-all-subtypes">Get all card subtypes - Endpoint</a>
          * @return Returns a list containing all of the Magic: The Gathering card subtypes.
          */
         fun getAllSubtypes(): Response<List<String>> {
