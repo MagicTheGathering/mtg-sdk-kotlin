@@ -3,7 +3,7 @@ Magic: The Gathering Kotlin SDK
 
 Kotlin SDK for using the [magicthegathering.io](http://magicthegathering.io) APIs.
 
-Note that API use is free and does not require authentication or registration, but some rate limits apply. [Read the official API website for more information](https://docs.magicthegathering.io/#rate-limits).
+Note that API use is free and does not require authentication or registration, but some rate limits apply. [Read the official API website for more information](https://docs.magicthegathering.io/#documentationrate_limits).
 
 | Bintray JCenter | Build Status |
 |:---------------:|:------------:|
