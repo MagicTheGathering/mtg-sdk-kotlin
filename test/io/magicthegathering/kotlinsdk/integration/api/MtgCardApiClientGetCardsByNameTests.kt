@@ -26,8 +26,7 @@ class MtgCardApiClientGetCardsByNameTests {
         test.assertComplete()
         test.assertValueCount(1)
         test.assertValue { cards ->
-            cards[0].name == "Jace Beleren" &&
-                    cards[1].name == "Jace, Memory Adept"
+            cards.size == 2
         }
     }
 
@@ -45,8 +44,7 @@ class MtgCardApiClientGetCardsByNameTests {
         val cards = cardsResponse.body()
 
         Assert.assertFalse(cards!!.isEmpty())
-        Assert.assertEquals("Jace Beleren", cards[0].name)
-        Assert.assertEquals("Jace, Memory Adept", cards[1].name)
+        Assert.assertEquals(2, cards.size)
     }
 
     @Test
