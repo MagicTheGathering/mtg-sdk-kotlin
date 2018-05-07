@@ -25,7 +25,7 @@ repositories {
 Next add the gradle compile dependency to the `build.gradle` file of your app module.
 
 ```
-compile 'io.magicthegathering:kotlinsdk:1.0.1'
+compile 'io.magicthegathering:kotlinsdk:1.0.2'
 ```
 
 Prerequisites
@@ -52,6 +52,20 @@ val cardsResponse: Response<List<MtgCard>> = MtgCardApiClient.getAllCards()
 val cards = cardsResponse.body()
 ```
 
+#### Get all cards by set code with default values (pageSize = 10, page = 0) as observable
+```kotlin
+val observable: Observable<List<MtgCard>> = MtgCardApiClient.getAllCardsBySetCodeObservable("DOM")
+observable.subscribe { cards: List<MtgCard> ->
+    ...
+}
+```
+
+#### Get all cards by set code with default values (pageSize = 10, page = 0)
+```kotlin
+val cardsResponse: Response<List<MtgCard>> = MtgCardApiClient.getAllCardsBySetCode("DOM")
+val cards = cardsResponse.body()
+```
+
 #### Get all cards with pageSize as observable
 ```kotlin
 val observable: Observable<List<MtgCard>> = MtgCardApiClient.getAllCardsObservable(50)
@@ -63,6 +77,20 @@ observable.subscribe { cards: List<MtgCard> ->
 #### Get all cards with pageSize
 ```kotlin
 val cardsResponse: Response<List<MtgCard>> = MtgCardApiClient.getAllCards(50)
+val cards = cardsResponse.body()
+```
+
+#### Get all cards by set code with pageSize as observable
+```kotlin
+val observable: Observable<List<MtgCard>> = MtgCardApiClient.getAllCardsBySetCodeObservable("DOM", 50)
+observable.subscribe { cards: List<MtgCard> ->
+    ...
+}
+```
+
+#### Get all cards by set code with pageSize
+```kotlin
+val cardsResponse: Response<List<MtgCard>> = MtgCardApiClient.getAllCardsBySetCode("DOM", 50)
 val cards = cardsResponse.body()
 ```
 
