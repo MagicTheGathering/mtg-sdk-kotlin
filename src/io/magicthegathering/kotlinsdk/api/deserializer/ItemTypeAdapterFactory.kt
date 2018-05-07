@@ -22,7 +22,7 @@ class ItemTypeAdapterFactory : TypeAdapterFactory {
             override fun read(`in`: JsonReader): T {
                 var jsonElement: JsonElement = elementAdapter?.read(`in`) as JsonElement
 
-                if (jsonElement!!.isJsonObject) {
+                if (jsonElement.isJsonObject) {
                     val jsonObject: JsonObject = jsonElement.asJsonObject
                     val jsonObjectParentKey = jsonObject.entrySet().first().key
 

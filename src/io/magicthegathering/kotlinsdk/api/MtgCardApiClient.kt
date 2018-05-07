@@ -40,6 +40,30 @@ class MtgCardApiClient private constructor() {
         }
 
         /**
+         * Get all Magic: The Gathering cards by set code.
+         *
+         * @param setCode The set code.
+         * @param pageSize The page size.
+         * @param page The next page.
+         * @return Returns an Observable that emits a list containing all of the Magic: The Gathering cards.
+         */
+        fun getAllCardsBySetCodeObservable(setCode: String, pageSize: Int = 10, page: Int = 0): Observable<List<MtgCard>> {
+            return instance.getAllCardsBySetCodeObservable(setCode, pageSize, page)
+        }
+
+        /**
+         * Get all Magic: The Gathering cards by set code.
+         *
+         * @param setCode The set code.
+         * @param pageSize The page size.
+         * @param page The next page.
+         * @return Returns a list containing all of the Magic: The Gathering cards.
+         */
+        fun getAllCardsBySetCode(setCode: String, pageSize: Int = 10, page: Int = 0): Response<List<MtgCard>> {
+            return instance.getAllCardsBySetCode(setCode, pageSize, page).execute()
+        }
+
+        /**
          * Get a specific Magic: The Gathering card.
          *
          * @param multiverseId The official Magic: The Gathering card id.
@@ -167,6 +191,12 @@ class MtgCardApiClient private constructor() {
 
         @GET("cards")
         fun getAllCards(@Query("pageSize") pageSize: Int, @Query("page") page: Int): Call<List<MtgCard>>
+
+        @GET("cards")
+        fun getAllCardsBySetCodeObservable(@Query("set") setCode: String, @Query("pageSize") pageSize: Int, @Query("page") page: Int): Observable<List<MtgCard>>
+
+        @GET("cards")
+        fun getAllCardsBySetCode(@Query("set") setCode: String, @Query("pageSize") pageSize: Int, @Query("page") page: Int): Call<List<MtgCard>>
 
         @GET("cards/{multiverseId}")
         fun getCardObservable(@Path("multiverseId") multiverseId: Int): Observable<MtgCard>
