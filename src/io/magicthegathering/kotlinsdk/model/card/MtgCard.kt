@@ -1,6 +1,6 @@
 package io.magicthegathering.kotlinsdk.model.card
 
-class MtgCard(val id: String?,
+data class MtgCard(val id: String?,
               val name: String,
               val names: List<String>?,
               val manaCost: String,
