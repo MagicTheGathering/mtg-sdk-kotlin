@@ -66,17 +66,8 @@ class MtgCardApiClientGetCardsByNameTests {
         test.assertValueCount(1)
         test.assertValue { cards ->
             cards[0].name == "Zurgo Helmsmasher" &&
-                    cards[0].rarity == "Special" &&
-                    cards[0].set == "pPRE" &&
-                    cards[0].setName == "Prerelease Events" &&
                     cards[1].name == "Zurgo Helmsmasher" &&
-                    cards[1].rarity == "Mythic Rare" &&
-                    cards[1].set == "DDN" &&
-                    cards[1].setName == "Duel Decks: Speed vs. Cunning" &&
-                    cards[2].name == "Zurgo Helmsmasher" &&
-                    cards[2].rarity == "Mythic Rare" &&
-                    cards[2].set == "KTK" &&
-                    cards[2].setName == "Khans of Tarkir"
+                    cards[2].name == "Zurgo Helmsmasher"
         }
     }
 
@@ -95,16 +86,7 @@ class MtgCardApiClientGetCardsByNameTests {
 
         Assert.assertFalse(cards!!.isEmpty())
         Assert.assertEquals("Zurgo Helmsmasher", cards[0].name)
-        Assert.assertEquals("Special", cards[0].rarity)
-        Assert.assertEquals("pPRE", cards[0].set)
-        Assert.assertEquals("Prerelease Events", cards[0].setName)
         Assert.assertEquals("Zurgo Helmsmasher", cards[1].name)
-        Assert.assertEquals("Mythic Rare", cards[1].rarity)
-        Assert.assertEquals("DDN", cards[1].set)
-        Assert.assertEquals("Duel Decks: Speed vs. Cunning", cards[1].setName)
         Assert.assertEquals("Zurgo Helmsmasher", cards[2].name)
-        Assert.assertEquals("Mythic Rare", cards[2].rarity)
-        Assert.assertEquals("KTK", cards[2].set)
-        Assert.assertEquals("Khans of Tarkir", cards[2].setName)
     }
 }

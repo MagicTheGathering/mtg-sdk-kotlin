@@ -51,11 +51,7 @@ class MtgSetApiClientTests {
             set.code == "KTK" &&
                     set.name == "Khans of Tarkir" &&
                     set.type == "expansion" &&
-                    set.border == "black" &&
-                    set.mkm_id == 1495 &&
-                    set.mkm_name == "Khans of Tarkir" &&
                     set.releaseDate == DateTime.parse("2014-09-26", DateTimeFormatterSingleton.instance) &&
-                    set.magicCardsInfoCode == "ktk" &&
                     set.block == "Khans of Tarkir"
         }
     }
@@ -77,11 +73,7 @@ class MtgSetApiClientTests {
         Assert.assertEquals("KTK", set!!.code)
         Assert.assertEquals("Khans of Tarkir", set.name)
         Assert.assertEquals("expansion", set.type)
-        Assert.assertEquals("black", set.border)
-        Assert.assertEquals(1495, set.mkm_id)
-        Assert.assertEquals("Khans of Tarkir", set.mkm_name)
         Assert.assertEquals(DateTime.parse("2014-09-26", DateTimeFormatterSingleton.instance), set.releaseDate)
-        Assert.assertEquals("ktk", set.magicCardsInfoCode)
         Assert.assertEquals("Khans of Tarkir", set.block)
     }
 
@@ -97,12 +89,12 @@ class MtgSetApiClientTests {
 
     @Test
     fun generateBoosterPackBySetCodeObservable() {
-        val test = MtgSetApiClient.generateBoosterPackBySetCodeObservable("mm2").test()
+        val test = MtgSetApiClient.generateBoosterPackBySetCodeObservable("ktk").test()
 
         test.assertComplete()
         test.assertValueCount(1)
         test.assertValue { cards ->
-            cards.size == 15
+            cards.size == 14
         }
     }
 
@@ -116,9 +108,9 @@ class MtgSetApiClientTests {
 
     @Test
     fun generateBoosterPackBySetCode() {
-        val cardsResponse = MtgSetApiClient.generateBoosterPackBySetCode("mm2")
+        val cardsResponse = MtgSetApiClient.generateBoosterPackBySetCode("ktk")
         val cards = cardsResponse.body()
 
-        Assert.assertEquals(15, cards!!.size)
+        Assert.assertEquals(14, cards!!.size)
     }
 }

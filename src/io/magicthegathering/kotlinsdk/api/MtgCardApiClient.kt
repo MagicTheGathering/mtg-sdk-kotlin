@@ -130,58 +130,6 @@ class MtgCardApiClient private constructor() {
         fun getCardsByExactName(name: String, pageSize: Int, page: Int): Response<List<MtgCard>> {
             return instance.getCardsByName("\"$name\"", pageSize, page).execute()
         }
-
-        /**
-         * Get Magic: The Gathering cards by partial name with non English language.
-         *
-         * @param language The language to search.
-         * @param name The partial name to search.
-         * @param pageSize The page size.
-         * @param page The next page.
-         * @return Returns an Observable that emits a list containing the search result.
-         */
-        fun getCardsByPartialNameWithNonEnglishLanguageObservable(language: String, name: String, pageSize: Int, page: Int): Observable<List<MtgCard>> {
-            return instance.getCardsByNameWithNonEnglishLanguageObservable(language, name, pageSize, page)
-        }
-
-        /**
-         * Get Magic: The Gathering cards by partial name with non English language.
-         *
-         * @param language The language to search.
-         * @param name The partial name to search.
-         * @param pageSize The page size.
-         * @param page The next page.
-         * @return Returns a list containing the search result.
-         */
-        fun getCardsByPartialNameWithNonEnglishLanguage(language: String, name: String, pageSize: Int, page: Int): Response<List<MtgCard>> {
-            return instance.getCardsByNameWithNonEnglishLanguage(language, name, pageSize, page).execute()
-        }
-
-        /**
-         * Get Magic: The Gathering cards by exact name with non English language.
-         *
-         * @param language The language to search.
-         * @param name The exact name to search.
-         * @param pageSize The page size.
-         * @param page The next page.
-         * @return Returns an Observable that emits a list containing the search result.
-         */
-        fun getCardsByExactNameWithNonEnglishLanguageObservable(language: String, name: String, pageSize: Int, page: Int): Observable<List<MtgCard>> {
-            return instance.getCardsByNameWithNonEnglishLanguageObservable(language, "\"$name\"", pageSize, page)
-        }
-
-        /**
-         * Get Magic: The Gathering cards by exact name with non English language.
-         *
-         * @param language The language to search.
-         * @param name The exact name to search.
-         * @param pageSize The page size.
-         * @param page The next page.
-         * @return Returns a list containing the search result.
-         */
-        fun getCardsByExactNameWithNonEnglishLanguage(language: String, name: String, pageSize: Int, page: Int): Response<List<MtgCard>> {
-            return instance.getCardsByNameWithNonEnglishLanguage(language, "\"$name\"", pageSize, page).execute()
-        }
     }
 
     private interface MtgCardApi {
@@ -209,11 +157,5 @@ class MtgCardApiClient private constructor() {
 
         @GET("cards")
         fun getCardsByName(@Query("name") name: String, @Query("pageSize") pageSize: Int, @Query("page") page: Int): Call<List<MtgCard>>
-
-        @GET("cards")
-        fun getCardsByNameWithNonEnglishLanguageObservable(@Query("language") language: String, @Query("name") name: String, @Query("pageSize") pageSize: Int, @Query("page") page: Int): Observable<List<MtgCard>>
-
-        @GET("cards")
-        fun getCardsByNameWithNonEnglishLanguage(@Query("language") language: String, @Query("name") name: String, @Query("pageSize") pageSize: Int, @Query("page") page: Int): Call<List<MtgCard>>
     }
 }
