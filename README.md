@@ -25,7 +25,7 @@ repositories {
 Next add the gradle compile dependency to the `build.gradle` file of your app module.
 
 ```
-compile 'io.magicthegathering:kotlinsdk:1.0.2'
+compile 'io.magicthegathering:kotlinsdk:1.0.3'
 ```
 
 Prerequisites
